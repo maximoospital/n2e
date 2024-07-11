@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>n2e</title>
+    <style>
+        body {
+            min-width: 233px; /* Set minimum width */
+            min-height: 235px; /* Set minimum height */
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        #outputlabel {
+            opacity: 0.5;
+        }
+        #copyToClipboard {
+            display: block; 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 10px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: fixed; background-color: white; padding: 20px;">
+        <h1 style="margin: 0 0 10px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">n2e</h1>
+        <input type="text" placeholder="Enter support ID..." id="supportIdInput" maxlength="26">
+        <br>
+        <label><input type="checkbox" id="addPrefix"> Add "lp_1"</label>
+        <p><span id="outputlabel">Out: </span><span id="outputValue"></span></p>
+        <button id="copyToClipboard">Copy to Clipboard</button>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
