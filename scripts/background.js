@@ -17,15 +17,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "n2e-convert" && info.selectionText) {
-      // Replace the selected text with the converted text and paste it back into the page
-        let selectedText = info.selectionText;
-        // Remove all - from the selected text
-        let cleanupSelectedText = selectedText.replace(/-/g, '');
-        if (cleanupSelectedText.length===21) {
-          // Send the converted text back to the content script
-          chrome.tabs.sendMessage(tab.id, {action: "convertText", text: cleanupSelectedText});
-        } else {
-            alert("The selected text does not contain 21 digits.");
-        }
+      let selectedText = info.selectionText;
+      // Remove all - from the selected text
+      let cleanupSelectedText = selectedText.replace(/-/g, '');
+      if (cleanupSelectedText.length===21) {
+        // Send the converted text back to the content script and send the rect of the selected text
+        chrome.tabs.sendMessage(tab.id, {action: "convertText", text: cleanupSelectedText});
+      } else {
+          alert("The selected text does not contain 21 digits.");
+      }
     }
   });
